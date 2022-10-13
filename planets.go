@@ -73,12 +73,12 @@ var (
 		DLongAscendingNode:     0.20469106,
 	}
 	Saturn = Params{
-		SemiMajorAxis:          19.18916464,
-		Eccentricity:           0.04725744,
-		Inclination:            0.77263783,
-		MeanLongitude:          313.23810451,
-		LongitudePerihelion:    170.95427630,
-		LongitudeAscendingNode: 74.01692503,
+		SemiMajorAxis:          9.53667594,
+		Eccentricity:           0.05386179,
+		Inclination:            2.48599187,
+		MeanLongitude:          49.95424423,
+		LongitudePerihelion:    92.59887831,
+		LongitudeAscendingNode: 113.66242448,
 		DSemiMajorAxis:         -0.00125060,
 		DEccentricity:          -0.00050991,
 		DInclination:           0.00193609,
