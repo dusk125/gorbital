@@ -27,13 +27,17 @@ type Params struct {
 const (
 	secondsPerYear      = 86400.0
 	julianUnixEpoch     = 2440587.5
-	julianEpochJ2000    = 2451545.0
-	julianCenturyInDays = 36525
+	JulianEpochJ2000    = 2451545.0
+	JulianCenturyInDays = 36525
 )
 
 // Julian converts a Golang time.Time structure to a Julian timestamp
 func Julian(t time.Time) float64 {
 	return float64(t.Unix()/secondsPerYear) + julianUnixEpoch
+}
+
+func JulianCenturiesSinceJ2000(t time.Time) float64 {
+	return (Julian(t) - JulianEpochJ2000) / JulianCenturyInDays
 }
 
 // Converts radians to degrees
@@ -68,7 +72,7 @@ func EstimateEccentricAnomaly(eccentricity, meanAnomaly float64) float64 {
 
 // Decompose calculates the 3D-cartisians coordinates for the given orbital parameters at a given time
 func (p Params) Decompose(t time.Time) (x, y, z float64) {
-	T := (Julian(t) - julianEpochJ2000) / julianCenturyInDays
+	T := JulianCenturiesSinceJ2000(t)
 	p = Params{
 		SemiMajorAxis:          p.SemiMajorAxis + p.DSemiMajorAxis*T,
 		Eccentricity:           p.Eccentricity + p.DEccentricity*T,
